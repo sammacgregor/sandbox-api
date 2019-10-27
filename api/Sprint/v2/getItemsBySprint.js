@@ -11,7 +11,7 @@ exports.getItemsBySprint = function (req, res) {
 
 
   sql
-  .query("Select Sprint_ID, Item_ID, Summary, Item_Priority_ID, Item_Status_ID, Item_Type_ID, Assignee_ID from Item.Item WHERE Sprint_ID = $1", sprintID)
+  .query("Select * from Item.Item WHERE sprint_ID = $1", [sprintID])
   .then(result => {
       return res.send({ error: false, data: result.rows, message: 'getItemsBySprint' })
 

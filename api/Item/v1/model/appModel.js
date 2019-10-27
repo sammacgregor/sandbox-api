@@ -22,7 +22,7 @@ var Item = function (item) {
 
 };
 Item.createItem = function (newItem, result) {
-    sql.query("INSERT INTO `Backlog`.`Item.Item` set ?", newItem, function (err, res) {
+    sql.query("INSERT INTO `Sandbox`.`Item.Item` set ?", newItem, function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -34,7 +34,7 @@ Item.createItem = function (newItem, result) {
     });
 };
 Item.getItemById = function (ItemID, result) {
-    sql.query("Select * from `Backlog`.`Item.Item` where ItemID = ?", ItemID, function (err, res) {
+    sql.query("Select * from `Sandbox`.`Item.Item` where ItemID = ?", ItemID, function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -50,7 +50,7 @@ Item.getItemById = function (ItemID, result) {
 
 Item.getAllItem = function (result) {
 
-    sql.query("Select * from `Backlog`.`Item.Item`", function (err, res) {
+    sql.query("Select * from `Sandbox`.`Item.Item`", function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -68,7 +68,7 @@ Item.getAllItem = function (result) {
 
 Item.getItemsBySprintID = function (SprintID, result) {
 
-    sql.query("Select SprintID, ItemID, Summary, ItemPriorityID, ItemStatusID, ItemTypeID, AssigneeID from `Backlog`.`Item.Item` WHERE SprintID = ?", SprintID, function (err, res) {
+    sql.query("Select SprintID, ItemID, Summary, ItemPriorityID, ItemStatusID, ItemTypeID, AssigneeID from `Sandbox`.`Item.Item` WHERE SprintID = ?", SprintID, function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -86,7 +86,7 @@ Item.getItemsBySprintID = function (SprintID, result) {
 
 Item.getItemsByBoardID = function (result) {
 
-    sql.query("Select * from `Backlog`.`Item.Item` WHERE BoardID = ?", function (err, res) {
+    sql.query("Select * from `Sandbox`.`Item.Item` WHERE BoardID = ?", function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -102,7 +102,7 @@ Item.getItemsByBoardID = function (result) {
 
 // Item.updateById = function(id, item, result){
 //   sql.query(
-//       "UPDATE `Backlog`.`Item.Item` SET
+//       "UPDATE `Sandbox`.`Item.Item` SET
 //       ItemTypeID = COALESCE(?,ItemTypeID),
 //       ItemStatusID = COALESCE(?,ItemTypeID),
 //       ItemPriorityID = COALESCE(?,ItemTypeID),
@@ -145,7 +145,7 @@ Item.getItemsByBoardID = function (result) {
 //             }); 
 // };
 Item.remove = function (id, result) {
-    sql.query("DELETE FROM `Backlog`.`Item.Item` WHERE ItemID = ?", [id], function (err, res) {
+    sql.query("DELETE FROM `Sandbox`.`Item.Item` WHERE ItemID = ?", [id], function (err, res) {
 
         if (err) {
             console.log("error: ", err);

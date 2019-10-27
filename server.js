@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express'),
   app = express(),
   bodyParser = require('body-parser');
@@ -23,17 +24,6 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 
-const mysql = require('mysql');
-// connection configurations
-const mc = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    db: 'AuditLog'
-});
- 
-// connect to database
-mc.connect();
 
 app.listen(port);
 
@@ -48,21 +38,17 @@ app.use(bodyParser.json());
 var customers = require('./api/Customer/v1/routes');
 customers(app);
 
-
-var tasks = require('./api/Tasks/v1/routes');
-tasks(app);
-
-var users = require('./api/User/v1/routes');
+var users = require('./api/User/v2/routes');
 users(app);
 
 var items = require('./api/Item/v2/routes');
 items(app);
 
-var sprints = require('./api/Sprint/v1/routes');
+var sprints = require('./api/Sprint/v2/routes');
 sprints(app);
 
 
-var boards = require('./api/Board/v1/routes');
+var boards = require('./api/Board/v2/routes');
 boards(app);
 
 // var customer = require('./api/Customer/v1/routes'); //importing route

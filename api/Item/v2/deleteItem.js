@@ -1,5 +1,5 @@
 'use strict';
-var sql = require('./db.js');
+var sql = require('../../db.js');
 
 // var Item = require('./appModel.js/index.js');
 
@@ -12,14 +12,17 @@ exports.deleteItem = function (req, res) {
 }
 
 
-    sql.query("DELETE FROM `Backlog`.`Item.Item` WHERE ItemID = ?", [itemID], 
-    function (error, results, fields) {
-      if (error) {
-          throw error;
-      } else {
-          console.log(res);
-          return res.send({ error: false, data: results, message: 'deleteItem' })
-      }
-  });
+
+sql
+.query("DELETE FROM Item.Item WHERE Item_ID = $1", [itemID])
+.then(result => {
+    return res.send({ error: false, data: result.rows, message: 'deleteItem' })
+
+})
+.catch(e => {
+    console.error(e.stack)
+    res.send({ error: true, data: e.stack, message: 'deleteItem' })
+})
+
 
 };

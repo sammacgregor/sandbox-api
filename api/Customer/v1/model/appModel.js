@@ -26,7 +26,7 @@ var CustomerMemberTrimmed = function (customerMemberTrimmed) {
 
 CustomerMemberTrimmed.createCustomerMemberTrimmed = function (newCustomerMemberTrimmed, result) {
     console.log(newCustomerMemberTrimmed);
-    sql.query("CALL `Customer`.`Role.sp_CreateCustomer`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    sql.query("CALL `Sandbox`.`Role.sp_CreateCustomer`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
             newCustomerMemberTrimmed.RoleTypeCode,
             newCustomerMemberTrimmed.GivenName,
@@ -58,7 +58,7 @@ CustomerMemberTrimmed.createCustomerMemberTrimmed = function (newCustomerMemberT
         });
 };
 CustomerMemberTrimmed.getCustomerMemberTrimmedById = function (RoleID, result) {
-    sql.query("Select * from `Customer`.`Role.vw_CustomerMemberTrimmed` where RoleID = ? ", RoleID, function (err, res) {
+    sql.query("Select * from `Sandbox`.`Role.vw_CustomerMemberTrimmed` where RoleID = ? ", RoleID, function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -71,7 +71,7 @@ CustomerMemberTrimmed.getCustomerMemberTrimmedById = function (RoleID, result) {
 };
 CustomerMemberTrimmed.getAllCustomerMemberTrimmed = function (start, limit, result) {
 
-    var query = "Select count (*) as TotalCount FROM `Customer`.`Role.vw_CustomerMemberTrimmed`";
+    var query = "Select count (*) as TotalCount FROM `Sandbox`.`Role.vw_CustomerMemberTrimmed`";
 
     sql.query(query, function (err, rows) {
         if (err) {
@@ -94,7 +94,7 @@ CustomerMemberTrimmed.getAllCustomerMemberTrimmed = function (start, limit, resu
                 limitNum = parseInt(limit);
             }
 
-                sql.query("Select * from `Customer`.`Role.vw_CustomerMemberTrimmed` limit ? OFFSET ?", [limitNum, startNum], function (err, res) {
+                sql.query("Select * from `Sandbox`.`Role.vw_CustomerMemberTrimmed` limit ? OFFSET ?", [limitNum, startNum], function (err, res) {
 
                     if (err) {
                         console.log("error: ", err);
@@ -116,7 +116,7 @@ CustomerMemberTrimmed.getAllCustomerMemberTrimmed = function (start, limit, resu
 
 };
 // CustomerMemberTrimmed.updateById = function(id, CustomerMemberTrimmed, result){
-//   sql.query("UPDATE `AuditLog`.`CustomerMemberTrimmeds` SET CustomerMemberTrimmed = ? WHERE id = ?", [CustomerMemberTrimmed.CustomerMemberTrimmed, id], function (err, res) {
+//   sql.query("UPDATE `Sandbox`.`CustomerMemberTrimmeds` SET CustomerMemberTrimmed = ? WHERE id = ?", [CustomerMemberTrimmed.CustomerMemberTrimmed, id], function (err, res) {
 //           if(err) {
 //               console.log("error: ", err);
 //                 result(null, err);
@@ -127,7 +127,7 @@ CustomerMemberTrimmed.getAllCustomerMemberTrimmed = function (start, limit, resu
 //             }); 
 // };
 // CustomerMemberTrimmed.remove = function(id, result){
-//      sql.query("DELETE FROM `Customer`.`Role.vw_CustomerMemberTrimmed` WHERE RoleID = ?", [id], function (err, res) {
+//      sql.query("DELETE FROM `Sandbox`.`Role.vw_CustomerMemberTrimmed` WHERE RoleID = ?", [id], function (err, res) {
 
 //                 if(err) {
 //                     console.log("error: ", err);

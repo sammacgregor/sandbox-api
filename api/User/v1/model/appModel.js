@@ -17,7 +17,7 @@ var User = function (user) {
 
 };
 User.createUser = function (newUser, result) {
-    sql.query("INSERT INTO `System`.`User.User` set ?", newUser, function (err, res) {
+    sql.query("INSERT INTO `Sandbox`.`User.User` set ?", newUser, function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -29,7 +29,7 @@ User.createUser = function (newUser, result) {
     });
 };
 User.getUserById = function (UserID, result) {
-    sql.query("Select * from `System`.`User.User` where UserID = ?", UserID, function (err, res) {
+    sql.query("Select * from `Sandbox`.`User.User` where UserID = ?", UserID, function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -43,7 +43,7 @@ User.getUserById = function (UserID, result) {
 };
 User.getAllUser = function (result) {
 
-    sql.query("Select * from `System`.`User.User`", function (err, res) {
+    sql.query("Select * from `Sandbox`.`User.User`", function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -57,7 +57,7 @@ User.getAllUser = function (result) {
     });
 };
 // User.updateById = function(id, user, result){
-//   sql.query("UPDATE `System`.`User.User` SET user = ? WHERE UserID = ?", [user.user, id], function (err, res) {
+//   sql.query("UPDATE `Sandbox`.`User.User` SET user = ? WHERE UserID = ?", [user.user, id], function (err, res) {
 //           if(err) {
 //               console.log("error: ", err);
 //                 result(null, err);
@@ -68,7 +68,7 @@ User.getAllUser = function (result) {
 //             }); 
 // };
 User.remove = function (id, result) {
-    sql.query("DELETE FROM `System`.`User.User` WHERE UserID = ?", [id], function (err, res) {
+    sql.query("DELETE FROM `Sandbox`.`User.User` WHERE UserID = ?", [id], function (err, res) {
 
         if (err) {
             console.log("error: ", err);

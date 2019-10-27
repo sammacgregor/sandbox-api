@@ -1,7 +1,7 @@
 'use strict';
 var sql = require('../../db.js');
 
-exports.getItems = function (req, res) {
+exports.getUsers = function (req, res) {
 
     var start = req.query.start;
     var limit = req.query.limit;
@@ -20,14 +20,14 @@ exports.getItems = function (req, res) {
 
 
     sql
-        .query("Select * from Item.Item limit $1 offset $2", [limitNum, startNum])
+        .query("Select * from System.User limit $1 offset $2", [limitNum, startNum])
         .then(result => {
-            return res.send({ error: false, data: result.rows, message: 'getItems' })
+            return res.send({ error: false, data: result.rows, message: 'getUsers' })
 
         })
         .catch(e => {
             console.error(e.stack)
-            res.send({ error: true, data: e.stack, message: 'getItems' })
+            res.send({ error: true, data: e.stack, message: 'getUsers' })
         })
 
  

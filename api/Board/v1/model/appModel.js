@@ -13,7 +13,7 @@ var Board = function (Board) {
 
 };
 Board.createBoard = function (newBoard, result) {
-    sql.query("INSERT INTO `Backlog`.`Board.Board` set ?", newBoard, function (err, res) {
+    sql.query("INSERT INTO `Sandbox`.`Board.Board` set ?", newBoard, function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -26,7 +26,7 @@ Board.createBoard = function (newBoard, result) {
 };
 
 Board.getBoardById = function (BoardID, result) {
-    sql.query("Select * from `Backlog`.`Board.Board` where BoardID = ?", BoardID, function (err, res) {
+    sql.query("Select * from `Sandbox`.`Board.Board` where BoardID = ?", BoardID, function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -41,7 +41,7 @@ Board.getBoardById = function (BoardID, result) {
 
 
 Board.getSprintsByBoardID = function (BoardID, result) {
-    sql.query("Select * from `Backlog`.`Sprint.Sprint` where BoardID = ?", BoardID, function (err, res) {
+    sql.query("Select * from `Sandbox`.`Sprint.Sprint` where BoardID = ?", BoardID, function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -60,7 +60,7 @@ Board.getSprintsByBoardID = function (BoardID, result) {
 
 Board.getAllBoard = function (result) {
 
-    sql.query("Select * from `Backlog`.`Board.Board`", function (err, res) {
+    sql.query("Select * from `Sandbox`.`Board.Board`", function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -77,7 +77,7 @@ Board.getAllBoard = function (result) {
 
 Board.getBoardsByBoardID = function (result) {
 
-    sql.query("Select * from `Backlog`.`Board.Board` WHERE BoardID = ?", function (err, res) {
+    sql.query("Select * from `Sandbox`.`Board.Board` WHERE BoardID = ?", function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -92,7 +92,7 @@ Board.getBoardsByBoardID = function (result) {
 };
 
 Board.updateById = function(id, Board, result){
-  sql.query("UPDATE `Backlog`.`Board.Board` SET Board = ? WHERE BoardID = ?", [Board.Board, id], function (err, res) {
+  sql.query("UPDATE `Sandbox`.`Board.Board` SET Board = ? WHERE BoardID = ?", [Board.Board, id], function (err, res) {
           if(err) {
               console.log("error: ", err);
                 result(null, err);
@@ -103,7 +103,7 @@ Board.updateById = function(id, Board, result){
             }); 
 };
 Board.remove = function (id, result) {
-    sql.query("DELETE FROM `Backlog`.`Board.Board` WHERE BoardID = ?", [id], function (err, res) {
+    sql.query("DELETE FROM `Sandbox`.`Board.Board` WHERE BoardID = ?", [id], function (err, res) {
 
         if (err) {
             console.log("error: ", err);

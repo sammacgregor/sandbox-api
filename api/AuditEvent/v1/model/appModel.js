@@ -21,7 +21,7 @@ var AuditEvent = function(auditEvent){
 
 
 AuditEvent.createAuditEvent = function (newAuditEvent, result) {    
-        sql.query("INSERT INTO `AuditLog`.`tasks` set ?", newAuditEvent, function (err, res) {
+        sql.query("INSERT INTO `Sandbox`.`tasks` set ?", newAuditEvent, function (err, res) {
                 
                 if(err) {
                     console.log("error: ", err);
@@ -34,7 +34,7 @@ AuditEvent.createAuditEvent = function (newAuditEvent, result) {
             });           
 };
 AuditEvent.getAuditEventById = function (auditEventID, result) {
-        sql.query("Select task from `AuditLog`.`Audit.APIEventLog` where APIEventLogID = ? ", auditEventID, function (err, res) {             
+        sql.query("Select task from `Sandbox`.`Audit.APIEventLog` where APIEventLogID = ? ", auditEventID, function (err, res) {             
                 if(err) {
                     console.log("error: ", err);
                     result(err, null);
@@ -46,7 +46,7 @@ AuditEvent.getAuditEventById = function (auditEventID, result) {
             });   
 };
 AuditEvent.getAllAuditEvents = function (result) {
-        sql.query("Select * from  `AuditLog`.`Audit.APIEventLog`", function (err, res) {
+        sql.query("Select * from  `Sandbox`.`Audit.APIEventLog`", function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
@@ -60,7 +60,7 @@ AuditEvent.getAllAuditEvents = function (result) {
             });   
 };
 // Task.updateById = function(id, task, result){
-//   sql.query("UPDATE  `AuditLog`.`Audit.APIEventLog` SET task = ? WHERE id = ?", [task.task, id], function (err, res) {
+//   sql.query("UPDATE  `Sandbox`.`Audit.APIEventLog` SET task = ? WHERE id = ?", [task.task, id], function (err, res) {
 //           if(err) {
 //               console.log("error: ", err);
 //                 result(null, err);
@@ -71,7 +71,7 @@ AuditEvent.getAllAuditEvents = function (result) {
 //             }); 
 // };
 AuditEvent.remove = function(id, result){
-     sql.query("DELETE FROM  `AuditLog`.`Audit.APIEventLog` WHERE APIEventLogID = ?", [id], function (err, res) {
+     sql.query("DELETE FROM  `Sandbox`.`Audit.APIEventLog` WHERE APIEventLogID = ?", [id], function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);

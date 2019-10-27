@@ -1,0 +1,3 @@
+# .env
+NODE_ENV=dev
+DATABASE_URI=postgres://system.user:password@localhost:5432/sandbox?ssl=false

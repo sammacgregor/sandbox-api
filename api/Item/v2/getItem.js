@@ -1,5 +1,5 @@
 'use strict';
-var sql = require('./db.js');
+var sql = require('../../db.js');
 
 exports.getItem = function (req, res) {
     let itemID = req.params.ItemID;
@@ -8,14 +8,15 @@ exports.getItem = function (req, res) {
         return res.status(400).send({ error: true, message: 'Please provide itemID' });
     }
 
-    sql.query("Select * from `Backlog`.`Item.Item` WHERE ItemID = ?", itemID,
-        function (error, results, fields) {
-            if (error) {
-                throw error;
-            } else {
-                console.log(res);
-                return res.send({ error: false, data: results[0], message: 'getItem' })
-            }
-        });
 
+    sql
+        .query("Select * from Item.Item WHERE Item_ID = $1", [itemID])
+        .then(result => {
+            return res.send({ error: false, data: result.rows, message: 'getItem' })
+
+        })
+        .catch(e => {
+            console.error(e.stack)
+            res.send({ error: true, data: e.stack, message: 'getItem' })
+        })
 };

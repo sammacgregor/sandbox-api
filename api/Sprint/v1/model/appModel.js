@@ -15,7 +15,7 @@ var Sprint = function (Sprint) {
     this.UpdatedBy = Sprint.UpdatedBy;
 };
 Sprint.createSprint = function (newSprint, result) {
-    sql.query("INSERT INTO `Backlog`.`Sprint.Sprint` set ?", newSprint, function (err, res) {
+    sql.query("INSERT INTO `Sandbox`.`Sprint.Sprint` set ?", newSprint, function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -27,7 +27,7 @@ Sprint.createSprint = function (newSprint, result) {
     });
 };
 Sprint.getSprintBySprintID = function (SprintID, result) {
-    sql.query("Select * from `Backlog`.`Sprint.Sprint` where SprintID = ?", SprintID, function (err, res) {
+    sql.query("Select * from `Sandbox`.`Sprint.Sprint` where SprintID = ?", SprintID, function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -43,7 +43,7 @@ Sprint.getSprintBySprintID = function (SprintID, result) {
 
 
 Sprint.getItemsBySprintID = function (SprintID, result) {
-    sql.query("Select * from `Backlog`.`Item.Item` where SprintID = ?", SprintID, function (err, res) {
+    sql.query("Select * from `Sandbox`.`Item.Item` where SprintID = ?", SprintID, function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -59,7 +59,7 @@ Sprint.getItemsBySprintID = function (SprintID, result) {
 
 Sprint.getAllSprint = function (result) {
 
-    sql.query("Select * from `Backlog`.`Sprint.Sprint`", function (err, res) {
+    sql.query("Select * from `Sandbox`.`Sprint.Sprint`", function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -76,7 +76,7 @@ Sprint.getAllSprint = function (result) {
 
 Sprint.getSprintsByBoardID = function (result) {
 
-    sql.query("Select * from `Backlog`.`Sprint.Sprint` WHERE BoardID = ?", function (err, res) {
+    sql.query("Select * from `Sandbox`.`Sprint.Sprint` WHERE BoardID = ?", function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -91,7 +91,7 @@ Sprint.getSprintsByBoardID = function (result) {
 };
 
 // Sprint.updateById = function(id, Sprint, result){
-//   sql.query("UPDATE `Backlog`.`Sprint.Sprint` SET Sprint = ? WHERE SprintID = ?", [Sprint.Sprint, id], function (err, res) {
+//   sql.query("UPDATE `Sandbox`.`Sprint.Sprint` SET Sprint = ? WHERE SprintID = ?", [Sprint.Sprint, id], function (err, res) {
 //           if(err) {
 //               console.log("error: ", err);
 //                 result(null, err);
@@ -102,7 +102,7 @@ Sprint.getSprintsByBoardID = function (result) {
 //             }); 
 // };
 Sprint.remove = function (id, result) {
-    sql.query("DELETE FROM `Backlog`.`Sprint.Sprint` WHERE SprintID = ?", [id], function (err, res) {
+    sql.query("DELETE FROM `Sandbox`.`Sprint.Sprint` WHERE SprintID = ?", [id], function (err, res) {
 
         if (err) {
             console.log("error: ", err);
