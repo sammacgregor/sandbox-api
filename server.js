@@ -35,8 +35,6 @@ app.use(bodyParser.json());
 
 
 
-var customers = require('./api/Customer/v1/routes');
-customers(app);
 
 var users = require('./api/User/v2/routes');
 users(app);
