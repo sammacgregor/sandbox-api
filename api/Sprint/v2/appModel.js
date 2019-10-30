@@ -3,16 +3,17 @@
 
 //Sprint object constructor
 var Sprint = function (Sprint) {
-    this.SprintID = Sprint.SprintID;
-    this.BoardID = Sprint.BoardID;
-    this.SprintStartDate = Sprint.SprintStartDate;
-    this.SprintEndDate = Sprint.SprintEndDate;
-    this.SprintActive = Sprint.SprintActive;
-    this.SprintStoryPoints = Sprint.SprintStoryPoints;
-    this.SprintTargetPoints = Sprint.SprintTargetPoints;
-    this.CreatedBy = Sprint.CreatedBy;
-    this.UpdatedDate = Sprint.UpdatedDate;
-    this.UpdatedBy = Sprint.UpdatedBy;
+    this.sprint_id = Sprint.sprint_id;
+    this.board_id = Sprint.board_id;
+    this.sprint_start_date = Sprint.sprint_start_date;
+    this.sprint_end_date = Sprint.sprint_end_date;
+    this.sprints_active = Sprint.sprints_active;
+    this.sprint_story_points = Sprint.sprint_story_points;
+    this.sprint_target_points = Sprint.sprint_target_points;
+    this.created_date = Sprint.created_date;
+    this.created_by = Sprint.created_by;
+    this.updated_date = Sprint.updated_date;
+    this.updated_by = Sprint.updated_by;
 };
 
 module.exports = Sprint;
