@@ -20,7 +20,7 @@ exports.addBoard = function (req, res) {
 
 
     sql
-      .query("INSERT INTO Board.Board (board_name, created_date, created_by, updated_date, updated_by) VALUES ($1, $2, $3, $4) RETURNING Board_ID", [
+      .query("INSERT INTO Board.Board (board_name, created_date, created_by, updated_date, updated_by) VALUES ($1, $2, $3, $4, $5) RETURNING Board_ID", [
       newBoard.board_name,
       newBoard.created_date,
       newBoard.created_by,
