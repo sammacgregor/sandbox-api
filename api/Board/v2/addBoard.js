@@ -27,7 +27,7 @@ exports.addBoard = function (req, res) {
       newBoard.updated_date,
       newBoard.updated_by
       ]).then(result => {
-        newBoard.board_id = JSON.stringify(result.rows[0].board_id);
+        newBoard.board_id = result.rows[0].board_id;
 
         return res.send({ error: false, data: newBoard, message: 'addBoard' })
 
