@@ -2,12 +2,12 @@
 
 //Board object constructor
 var Board = function (Board) {
-    this.BoardID = Board.BoardID;
-    this.BoardName = Board.BoardName;
-    this.CreatedDate = Board.CreatedDate;
-    this.CreatedBy = Board.CreatedBy;
-    this.UpdatedDate = Board.UpdatedDate;
-    this.UpdatedBy = Board.UpdatedBy;
+    this.board_id = Board.board_id;
+    this.board_name = Board.board_name;
+    this.created_date = Board.created_date;
+    this.created_by = Board.created_by;
+    this.updated_date = Board.updated_date;
+    this.updated_by = Board.updated_by;
 };
 
 
