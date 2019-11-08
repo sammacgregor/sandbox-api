@@ -9,7 +9,7 @@ exports.addSprint = function (req, res) {
   var newSprint = new Sprint(req.body);
 
   //handles null error 
-  if (!newSprint.BoardID) {
+  if (!newSprint.board_id) {
     console.log(JSON.stringify(req.body));
     res.status(400).send({ error: true, message: 'Mandatory attributes have not been provided' });
 
