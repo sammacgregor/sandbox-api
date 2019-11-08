@@ -32,7 +32,7 @@ exports.addSprint = function (req, res) {
       newSprint.updated_date,
       newSprint.updated_by
       ]).then(result => {
-        newSprint.SprintID = JSON.stringify(result.rows[0].sprint_id);
+        newSprint.sprint_id = JSON.stringify(result.rows[0].sprint_id);
 
         return res.send({ error: false, data: newSprint, message: 'addSprint' })
 
