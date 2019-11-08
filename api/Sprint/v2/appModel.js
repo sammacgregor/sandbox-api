@@ -5,6 +5,7 @@
 var Sprint = function (Sprint) {
     this.sprint_id = Sprint.sprint_id;
     this.board_id = Sprint.board_id;
+    this.sprint_goal = Sprint.sprint_goal;
     this.sprint_start_date = Sprint.sprint_start_date;
     this.sprint_end_date = Sprint.sprint_end_date;
     this.sprints_active = Sprint.sprints_active;

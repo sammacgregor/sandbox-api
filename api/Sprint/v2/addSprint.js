@@ -20,7 +20,7 @@ exports.addSprint = function (req, res) {
 
 
     sql
-      .query("INSERT INTO Sprint.Sprint (Board_ID, Sprint_Start_Date, Sprint_End_Date, Sprint_Active, Sprint_Story_Points, Sprint_Target_Points, Created_Date, Created_By, Updated_Date, Updated_By) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING sprint_id", [
+      .query("INSERT INTO Sprint.Sprint (board_id, sprint_start_date, sprint_end_date, sprint_active, sprint_story_points, sprint_target_points, created_date, created_by, updated_date, updated_by, sprint_goal) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING sprint_id", [
       newSprint.board_id,
       newSprint.sprint_start_date,
       newSprint.sprint_end_date,
@@ -30,7 +30,8 @@ exports.addSprint = function (req, res) {
       newSprint.created_date,
       newSprint.created_by,
       newSprint.updated_date,
-      newSprint.updated_by
+      newSprint.updated_by,
+      newSprint.sprint_goal
       ]).then(result => {
         newSprint.sprint_id = JSON.stringify(result.rows[0].sprint_id);
 
