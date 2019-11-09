@@ -8,7 +8,7 @@ var Auth = require('./appModel.js');
 var sql = require('../../db.js');
 
 
-exports.addBoard = function (req, res) {
+exports.authenticate = function (req, res) {
     var newAuth = new Auth(req.body);
 
     //handles null error 

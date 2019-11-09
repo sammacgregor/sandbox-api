@@ -49,7 +49,7 @@ sprints(app);
 var boards = require('./api/Board/v2/routes');
 boards(app);
 
-var auth = require('./api/Auth/v2/routes');
+var auth = require('./api/Auth/v1/routes');
 auth(app);
 
 

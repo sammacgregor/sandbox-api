@@ -2,12 +2,11 @@
 
 
 var authenticate = require('./authenticate');
-var addBoard = require('./addBoard');
 
 
 module.exports = function (app) {
 
-  app.route('/v2/boards')
+  app.route('/v1/auth')
     .post(authenticate.authenticate);
 
 };
