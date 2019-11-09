@@ -1,3 +1,5 @@
 # .env
 NODE_ENV=dev
-DATABASE_URI=postgres://system.user:password@localhost:5432/sandbox?ssl=false
+DATABASE_URL=postgres://system.user:password@localhost:5432/sandbox?ssl=false
+DATABASE_URL=postgres://budyzncmggjthq:4130e8a319db1bed61229f4421f325d377fc28d8cf7a54ae592872a8a1277571@ec2-54-243-253-181.compute-1.amazonaws.com:5432/da1s6jlm9l47vo
+

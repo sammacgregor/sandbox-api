@@ -30,6 +30,11 @@ exports.authenticate = function (req, res) {
                         return res.send({ error: false, data: {user_id: user.user_id}, message: 'authenticate' })
                         // res == true
                     })
+                    .catch(e => {
+                        console.log("bcrypt catch")
+                        console.error(e.stack)
+                        res.send({ error: true, data: e.stack, message: 'authenticate' })
+                    })
 
 
             })
