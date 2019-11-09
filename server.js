@@ -49,6 +49,10 @@ sprints(app);
 var boards = require('./api/Board/v2/routes');
 boards(app);
 
+var auth = require('./api/Auth/v2/routes');
+auth(app);
+
+
 // var customer = require('./api/Customer/v1/routes'); //importing route
 // var routes = require('./api/Tasks/v1/routes'); //importing route
 // routes(app); //register the route
