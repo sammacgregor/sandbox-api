@@ -30,9 +30,6 @@ exports.authenticate = function (req, res) {
                         return res.send({ error: false, data: {user_id: user.user_id}, message: 'authenticate' })
                         // res == true
                     })
-                    .catch(
-                        res.send({ error: true, message: 'authenticate' })
-                    );
 
 
             })
