@@ -3,13 +3,14 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-var Auth = require('./appModel.js');
+var userModel = require('../../User/v2/appModel')
+var authModel = require('./appModel.js');
 
 var sql = require('../../db.js');
 
 
 exports.authenticate = function (req, res) {
-    var newAuth = new Auth(req.body);
+    var newAuth = new authModel(req.body);
 
     //handles null error 
     if (!newAuth.email || !newAuth.password) {
@@ -22,7 +23,7 @@ exports.authenticate = function (req, res) {
         sql
             .query("SELECT * FROM System.User WHERE Email = $1", [newAuth.email])
             .then(result => {
-                var user = new boardModel(result.rows[0]);
+                var user = new userModel(result.rows[0]);
 
                 bcrypt.compare(user.password, hash)
                     .then(function (res) {
@@ -33,7 +34,6 @@ exports.authenticate = function (req, res) {
                         res.send({ error: true, message: 'authenticate' })
                     );
 
-                return res.send({ error: false, data: newBoard, message: 'authenticate' })
 
             })
             .catch(e => {
