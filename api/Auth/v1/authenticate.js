@@ -25,7 +25,7 @@ exports.authenticate = function (req, res) {
             .then(result => {
                 var user = new userModel(result.rows[0]);
 
-                bcrypt.compare(user.password, hash)
+                bcrypt.compare(user.password, newAuth.password)
                     .then(function (res) {
                         return res.send({ error: false, data: {user_id: user.user_id}, message: 'authenticate' })
                         // res == true
