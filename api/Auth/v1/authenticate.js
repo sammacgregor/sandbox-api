@@ -25,15 +25,20 @@ exports.authenticate = function (req, res) {
             .then(result => {
                 var user = new userModel(result.rows[0]);
 
-                bcrypt.compare(user.password, newAuth.password)
-                    .then(function (res) {
-                        return res.send({ error: false, data: {user_id: user.user_id}, message: 'authenticate' })
+                bcrypt.compare(newAuth.password,user.password)
+                    .then(function (success) {
+
+                        if(success) {
+                            return res.send({ error: false, data: {user_id: user.user_id}, message: 'succesfully authenticated' })
+                        } else {
+                            return res.send({ error: true, message: 'Not a valid password' })
+                        }
+
                         // res == true
                     })
                     .catch(e => {
-                        console.log("bcrypt catch")
                         console.error(e.stack)
-                        res.send({ error: true, data: e.stack, message: 'authenticate' })
+                        res.send({ error: true, data: e.stack, message: 'An error occured whilst trying to authenticate' })
                     })
 
 

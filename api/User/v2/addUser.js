@@ -1,5 +1,6 @@
 'use strict';
-
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 var User = require('./appModel.js');
 
@@ -17,10 +18,10 @@ exports.addUser = function (req, res) {
   }
   else {
 
-
-
-
-    sql
+    bcrypt.hash(newUser.password, saltRounds)
+    .then(function(hash) {
+      newUser.password = hash;
+      sql
       .query("INSERT INTO System.User (Password, Given_Name, Surname, Email, Mobile, Created_Date, Created_By, Updated_Date, Updated_By) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING user_id", [
         hash,
         newUser.given_name,
@@ -33,7 +34,7 @@ exports.addUser = function (req, res) {
         newUser.updated_by
       ]).then(result => {
         newUser.user_id = JSON.stringify(result.rows[0].user_id);
-
+        console.log(result)
         return res.send({ error: false, data: newUser, message: 'addUser' })
 
       })
@@ -41,6 +42,10 @@ exports.addUser = function (req, res) {
         console.error(e.stack)
         res.send({ error: true, data: e.stack, message: 'addUser' })
       })
+    })
+
+
+
 
 
 
