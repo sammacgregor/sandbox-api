@@ -42,13 +42,28 @@ exports.authenticate = function (req, res) {
                         .then(function (success) {
 
                             if (success) {
-                                res.cookie(
-                                    'user_id', user.user_id,
-                                    {
-                                        expires: new Date(Date.now() + 900000),
-                                        httpOnly: true,
-                                        secure: true
-                                    })
+
+                                if(req.session.views) {
+                                    req.session.views++
+                                    console.log("views: " + req.session.views)
+                                }  else {
+                                    req.session.user_id = user.user_id
+                                    req.session.views = 1
+                                    console.log("new session: " + req.session.views)
+
+                                }
+
+
+
+
+
+                                // res.cookie(
+                                //     'user_id', user.user_id,
+                                //     {
+                                //         expires: new Date(Date.now() + 900000),
+                                //         httpOnly: true,
+                                //         secure: true
+                                //     })
 
                                 return res.send({ error: false, data: { user_id: user.user_id }, message: 'succesfully authenticated' })
                             } else {

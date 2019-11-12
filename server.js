@@ -2,20 +2,20 @@ require('dotenv').config();
 const express = require('express'),
   app = express(),
   bodyParser = require('body-parser');
-  port = process.env.PORT || 3001;
+port = process.env.PORT || 3001;
 
-  var cors = require('cors');
+var cors = require('cors');
 
-  app.use(cors());
+app.use(cors());
 
 // Set up a whitelist and check against it:                                      
-var whitelist = ['http://localhost:3000','https://stormy-lake-69799.herokuapp.com','https://murmuring-sierra-48059.herokuapp.com','https://glacial-castle-04802.herokuapp.com']
+var whitelist = ['http://localhost:3000', 'https://stormy-lake-69799.herokuapp.com', 'https://murmuring-sierra-48059.herokuapp.com', 'https://glacial-castle-04802.herokuapp.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true)
     } else {
-      callback(new Error('Origin:'+origin+' - Not allowed by CORS'))
+      callback(new Error('Origin:' + origin + ' - Not allowed by CORS'))
     }
   }
 }
@@ -33,8 +33,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
+// sessions
+var session = require('express-session')
 
 
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false, expires: new Date(Date.now() + (1 * 86400 * 1000)) }
+}))
 
 var users = require('./api/User/v2/routes');
 users(app);
