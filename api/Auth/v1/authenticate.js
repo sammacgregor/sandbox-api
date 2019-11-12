@@ -11,6 +11,7 @@ var sql = require('../../db.js');
 
 exports.authenticate = function (req, res) {
     var newAuth = new Auth(req.body);
+    res.clearCookie('user_id')
 
     //handles null error 
     if (!newAuth.email || !newAuth.password) {
@@ -41,6 +42,14 @@ exports.authenticate = function (req, res) {
                         .then(function (success) {
 
                             if (success) {
+                                res.cookie(
+                                    'user_id', user.user_id,
+                                    {
+                                        expires: new Date(Date.now() + 900000),
+                                        httpOnly: true,
+                                        secure: true
+                                    })
+
                                 return res.send({ error: false, data: { user_id: user.user_id }, message: 'succesfully authenticated' })
                             } else {
                                 return res.send({ error: true, message: 'Not a valid password' })
