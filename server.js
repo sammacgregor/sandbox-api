@@ -6,7 +6,7 @@ port = process.env.PORT || 3001;
 
 var cors = require('cors');
 
-app.use(cors());
+// app.use(cors());
 
 // Set up a whitelist and check against it:                                      
 var whitelist = ['http://localhost:3000', 'https://stormy-lake-69799.herokuapp.com', 'https://murmuring-sierra-48059.herokuapp.com', 'https://glacial-castle-04802.herokuapp.com']
@@ -17,12 +17,12 @@ var corsOptions = {
     } else {
       callback(new Error('Origin:' + origin + ' - Not allowed by CORS'))
     }
-  }
+  },
+  credentials: true
 }
 
 // Then pass them to cors:
 app.use(cors(corsOptions));
-
 
 
 app.listen(port);
