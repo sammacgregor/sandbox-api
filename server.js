@@ -35,11 +35,19 @@ app.use(bodyParser.json());
 
 // sessions
 var session = require('express-session')
+const redis = require('redis');
+const redisStore = require('connect-redis')(session);
+var client = redis.createClient({url: process.env.REDIS_URL, no_ready_check: true});
 
 
 
 app.use(session({
   secret: 'keyboard cat',
+  store: new redisStore(
+    { host: 'localhost', 
+    port: 6379, 
+    client: client, 
+    ttl: 260 }),
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false, expires: new Date(Date.now() + (1 * 86400 * 1000)) }

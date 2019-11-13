@@ -2,4 +2,4 @@
 NODE_ENV=dev
 DATABASE_URL=postgres://system.user:password@localhost:5432/sandbox?ssl=false
 DATABASE_URL=postgres://budyzncmggjthq:4130e8a319db1bed61229f4421f325d377fc28d8cf7a54ae592872a8a1277571@ec2-54-243-253-181.compute-1.amazonaws.com:5432/da1s6jlm9l47vo
-
+REDIS_URL=redis://h:p279f58060b9253d36b5494a0e93179d842c52ad10d62b6efc3527bb668c72477@ec2-3-210-192-195.compute-1.amazonaws.com:26059
