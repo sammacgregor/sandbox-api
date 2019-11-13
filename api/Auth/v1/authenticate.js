@@ -11,8 +11,17 @@ var sql = require('../../db.js');
 
 exports.authenticate = function (req, res) {
     var newAuth = new Auth(req.body);
-    res.clearCookie('user_id')
 
+
+
+    if(req.session.user_id) {
+        req.session.views++
+        console.log("views: " + req.session.views)
+        return res.send({ error: false, message: 'Already authenticated' })
+
+    }  else {
+
+        console.log("Session not found, commencing auth")
     //handles null error 
     if (!newAuth.email || !newAuth.password) {
         console.log(JSON.stringify(req.body));
@@ -49,7 +58,7 @@ exports.authenticate = function (req, res) {
                                 }  else {
                                     req.session.user_id = user.user_id
                                     req.session.views = 1
-                                    console.log("new session: " + req.session.views)
+                                    console.log("new session: " + req.session.user_id)
 
                                 }
 
@@ -89,4 +98,8 @@ exports.authenticate = function (req, res) {
 
 
     }
+    }
+
+
+
 };
