@@ -12,7 +12,7 @@ var sql = require('../../db.js');
 exports.authenticate = function (req, res) {
     var newAuth = new Auth(req.body);
 
-
+    console.log(req.sessionID)
 
     if(req.session.user_id) {
         req.session.views++
@@ -59,6 +59,7 @@ exports.authenticate = function (req, res) {
                                     req.session.user_id = user.user_id
                                     req.session.views = 1
                                     console.log("new session: " + req.session.user_id)
+                                    console.log("id: " + req.session.id)
 
                                 }
 

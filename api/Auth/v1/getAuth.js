@@ -3,7 +3,7 @@
 
 exports.getAuth = function (req, res) {
 
-    if (req.session.user_id) {
+    if(req.session.user_id) {
         req.session.views++
         console.log("views: " + req.session.views)
         return res.send({ error: false, message: 'Already authenticated' })
