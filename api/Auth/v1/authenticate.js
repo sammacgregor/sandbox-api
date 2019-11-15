@@ -6,8 +6,7 @@ const saltRounds = 10;
 var userModel = require('../../User/v2/appModel')
 var Auth = require('./appModel.js');
 
-var sql = require('../../db.js');
-
+var sql = require('../../../config/db')
 
 exports.authenticate = function (req, res) {
     var newAuth = new Auth(req.body);

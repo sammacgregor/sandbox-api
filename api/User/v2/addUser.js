@@ -4,8 +4,7 @@ const saltRounds = 10;
 
 var User = require('./appModel.js');
 
-var sql = require('../../db.js');
-
+var sql = require('../../../config/db')
 
 exports.addUser = function (req, res) {
   var newUser = new User(req.body);

@@ -1,6 +1,5 @@
 'use strict';
-var sql = require('../../db.js');
-
+var sql = require('../../../config/db')
 // var Sprint = require('./appModel.js/index.js');
 
 

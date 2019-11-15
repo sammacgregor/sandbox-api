@@ -9,6 +9,7 @@ var deleteItem = require('./deleteItem');
 // var patchItem = require('./putItem');
 var addItem = require('./addItem');
 
+const auth = require('../../../middleware/auth')
 
 module.exports = function (app) {
 
@@ -18,17 +19,17 @@ module.exports = function (app) {
 
 
   app.route('/v2/items')
-    .get(getItems.getItems)
-    .post(addItem.addItem);
+    .get(auth,getItems.getItems)
+    .post(auth,addItem.addItem);
 
   app.route('/v2/items/itembysprint/:SprintID')
-    .get(getItemsBySprint.getItemsBySprint);
+    .get(auth,getItemsBySprint.getItemsBySprint);
 
 
   app.route('/v2/items/:ItemID')
-    .get(getItem.getItem)
+    .get(auth,getItem.getItem)
     // .put(patchItem.patchItem)
-    .delete(deleteItem.deleteItem);
+    .delete(auth,deleteItem.deleteItem);
 
 
 };

@@ -2,8 +2,7 @@
 
 var Item = require('./appModel.js');
 
-var sql = require('../../db.js');
-
+var sql = require('../../../config/db')
 
 exports.addItem = function (req, res) {
   var newItem = new Item(req.body);

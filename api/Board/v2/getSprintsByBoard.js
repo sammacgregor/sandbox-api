@@ -1,6 +1,5 @@
 'use strict';
-var sql = require('../../db.js');
-
+var sql = require('../../../config/db')
 exports.getSprintsByBoard = function (req, res) {
 
   let boardID = req.params.BoardID;

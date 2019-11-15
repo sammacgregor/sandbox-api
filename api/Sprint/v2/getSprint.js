@@ -1,6 +1,5 @@
 'use strict';
-var sql = require('../../db.js');
-
+var sql = require('../../../config/db')
 exports.getSprint = function (req, res) {
     let SprintID = req.params.SprintID;
 

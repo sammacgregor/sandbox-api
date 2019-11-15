@@ -6,6 +6,7 @@ var getUsers = require('./getUsers');
 var deleteUser = require('./deleteUser');
 // var patchUser = require('./putUser');
 var addUser = require('./addUser');
+const auth = require('../../../middleware/auth')
 
 
 module.exports = function (app) {
@@ -16,15 +17,15 @@ module.exports = function (app) {
 
 
   app.route('/v2/Users')
-    .get(getUsers.getUsers)
-    .post(addUser.addUser);
+    .get(auth,getUsers.getUsers)
+    .post(auth,addUser.addUser);
 
 
 
   app.route('/v2/Users/:UserID')
-    .get(getUser.getUser)
+    .get(auth,getUser.getUser)
     // .put(patchUser.patchUser)
-    .delete(deleteUser.deleteUser);
+    .delete(auth,deleteUser.deleteUser);
 
 
 };

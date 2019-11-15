@@ -9,6 +9,7 @@ var deleteSprint = require('./deleteSprint');
 // var patchSprint = require('./putSprint');
 var addSprint = require('./addSprint');
 
+const auth = require('../../../middleware/auth')
 
 module.exports = function (app) {
 
@@ -18,17 +19,17 @@ module.exports = function (app) {
 
 
   app.route('/v2/sprints')
-    .get(getSprints.getSprints)
-    .post(addSprint.addSprint);
+    .get(auth,getSprints.getSprints)
+    .post(auth,addSprint.addSprint);
 
     app.route('/v2/sprints/:SprintID/items')
-    .get(getItemsBySprint.getItemsBySprint);
+    .get(auth,getItemsBySprint.getItemsBySprint);
 
 
   app.route('/v2/sprints/:SprintID')
-    .get(getSprint.getSprint)
+    .get(auth,getSprint.getSprint)
     // .put(patchSprint.patchSprint)
-    .delete(deleteSprint.deleteSprint);
+    .delete(auth,deleteSprint.deleteSprint);
 
 
 };

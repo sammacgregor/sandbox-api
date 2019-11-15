@@ -2,8 +2,7 @@
 
 var Sprint = require('./appModel.js');
 
-var sql = require('../../db.js');
-
+var sql = require('../../../config/db')
 
 exports.addSprint = function (req, res) {
   var newSprint = new Sprint(req.body);

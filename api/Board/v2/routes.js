@@ -9,6 +9,7 @@ var deleteBoard = require('./deleteBoard');
 // var patchBoard = require('./putBoard');
 var addBoard = require('./addBoard');
 
+const auth = require('../../../middleware/auth')
 
 module.exports = function (app) {
 
@@ -18,17 +19,17 @@ module.exports = function (app) {
 
 
   app.route('/v2/boards')
-    .get(getBoards.getBoards)
-    .post(addBoard.addBoard);
+    .get(auth,getBoards.getBoards)
+    .post(auth,addBoard.addBoard);
 
-    app.route('/v2/boards/:BoardID/sprints/')
-    .get(getSprintsByBoard.getSprintsByBoard);
+  app.route('/v2/boards/:BoardID/sprints/')
+    .get(auth,getSprintsByBoard.getSprintsByBoard);
 
 
   app.route('/v2/boards/:BoardID')
-    .get(getBoard.getBoard)
+    .get(auth,getBoard.getBoard)
     // .put(patchBoard.patchBoard)
-    .delete(deleteBoard.deleteBoard);
+    .delete(auth,deleteBoard.deleteBoard);
 
 
 };

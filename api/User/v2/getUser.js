@@ -1,6 +1,5 @@
 'use strict';
-var sql = require('../../db.js');
-
+var sql = require('../../../config/db')
 exports.getUser = function (req, res) {
     let UserID = req.params.UserID;
 

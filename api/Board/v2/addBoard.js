@@ -2,8 +2,7 @@
 
 var Board = require('./appModel.js');
 
-var sql = require('../../db.js');
-
+var sql = require('../../../config/db')
 
 exports.addBoard = function (req, res) {
   var newBoard = new Board(req.body);

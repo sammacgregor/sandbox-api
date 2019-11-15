@@ -1,6 +1,5 @@
 'use strict';
-var sql = require('../../db.js');
-
+var sql = require('../../../config/db')
 exports.getItems = function (req, res) {
 
     var start = req.query.start;

@@ -1,6 +1,5 @@
 'use strict';
-var sql = require('../../db.js');
-
+var sql = require('../../../config/db')
 var boardModel = require('./appModel');
 
 exports.getBoard = function (req, res) {
