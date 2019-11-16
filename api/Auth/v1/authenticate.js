@@ -2,9 +2,9 @@
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+var userModel = require('../../../models/User');
 
-var userModel = require('../../User/v2/appModel')
-var Auth = require('./appModel.js');
+var Auth = require('../../../models/Auth');
 
 var sql = require('../../../config/db')
 

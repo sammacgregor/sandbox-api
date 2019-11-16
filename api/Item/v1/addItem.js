@@ -1,6 +1,7 @@
 'use strict';
 
-var Item = require('./appModel.js');
+
+var Item = require('../../../models/Item');
 
 var sql = require('../../../config/db')
 

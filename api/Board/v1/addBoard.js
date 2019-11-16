@@ -1,6 +1,6 @@
 'use strict';
 
-var Board = require('./appModel.js');
+var Board = require('../../../models/Board');
 
 var sql = require('../../../config/db')
 

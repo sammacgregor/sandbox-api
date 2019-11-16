@@ -1,19 +1,35 @@
 'use strict';
-module.exports = function(app) {
-  var item = require('./controller/appController');
 
-  // Item Routes
+
+var getItem = require('./getItem');
+
+var getItems = require('./getItems');
+var getItemsBySprint = require('./getItemsBySprint');
+var deleteItem = require('./deleteItem');
+// var patchItem = require('./putItem');
+var addItem = require('./addItem');
+
+const auth = require('../../../middleware/auth')
+
+module.exports = function (app) {
+
+
+
+  // Item V2 Routes
+
+
   app.route('/v1/items')
-    .get(item.list_all_items)
-    .post(item.create_a_item);
+    .get(auth,getItems.getItems)
+    .post(auth,addItem.addItem);
 
-    
-    app.route('/v1/items/itembysprint/:SprintID')
-    .get(item.get_items_by_sprint);
+  app.route('/v1/items/itembysprint/:SprintID')
+    .get(auth,getItemsBySprint.getItemsBySprint);
 
 
-   app.route('/v1/items/:ItemID')
-    .get(item.get_item_summary)
-    .put(item.update_a_item)
-    .delete(item.delete_a_item);
-    };
+  app.route('/v1/items/:ItemID')
+    .get(auth,getItem.getItem)
+    // .put(patchItem.patchItem)
+    .delete(auth,deleteItem.deleteItem);
+
+
+};

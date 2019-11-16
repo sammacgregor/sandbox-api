@@ -53,17 +53,17 @@ app.use(session({
   cookie: { secure: false, expires: new Date(Date.now() + (1 * 86400 * 1000)) }
 }))
 
-var users = require('./api/User/v2/routes');
+var users = require('./api/User/v1/routes');
 users(app);
 
-var items = require('./api/Item/v2/routes');
+var items = require('./api/Item/v1/routes');
 items(app);
 
-var sprints = require('./api/Sprint/v2/routes');
+var sprints = require('./api/Sprint/v1/routes');
 sprints(app);
 
 
-var boards = require('./api/Board/v2/routes');
+var boards = require('./api/Board/v1/routes');
 boards(app);
 
 var auth = require('./api/Auth/v1/routes');

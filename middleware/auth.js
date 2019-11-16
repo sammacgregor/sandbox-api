@@ -7,7 +7,8 @@ module.exports = function (req, res, next) {
     } else {
 
         console.log("Session not found")
-        return res.send({ error: true, message: 'No session found' })
+        res.status(401)
+        return res.send({ error: true, message: 'Unauthorized' })
     }
 
 }

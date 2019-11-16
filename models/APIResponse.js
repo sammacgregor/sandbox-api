@@ -1,13 +1,15 @@
-class APIResponse {
+'User strict';
+
+class Response {
     constructor(
-        Success,
-        Data,
-        Message
+        error,
+        data,
+        message
         ) {
-        this.Success = Success;
-        this.Data = Data;
-        this.Message = Message;
+        this.error = error;
+        this.data = data;
+        this.message = message;
     }
 }
 
-module.exports = APIResponse;
+module.exports = Response;

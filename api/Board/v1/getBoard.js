@@ -1,6 +1,6 @@
 'use strict';
 var sql = require('../../../config/db')
-var boardModel = require('./appModel');
+var boardModel = require('../../../models/Board');
 
 exports.getBoard = function (req, res) {
     let BoardID = req.params.BoardID;
